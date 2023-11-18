@@ -5,6 +5,7 @@ import { BsFillTrashFill } from "react-icons/bs";
 import { deleteTodoFunc, todoStatus } from "../actions/TodoActions";
 import { useToast } from "@/components/ui/use-toast";
 import { AiOutlineCheckCircle } from "react-icons/ai";
+import EditTodo from "./EditTodo";
 const Todo = ({ todo }: { todo: todoType }) => {
   const { toast } = useToast();
   const todoStyle = {
@@ -29,7 +30,7 @@ const Todo = ({ todo }: { todo: todoType }) => {
       </GlobalButton>
       <span className="text-center font-bold uppercase">{todo.title}</span>
       <div className="flex items-center gap-5">
-        {/* <EditTodo todo={todo} />   AiOutlineCheckCircle */}
+        <EditTodo todo={todo} />
         <GlobalButton
           onClick={() => deleteTodo(todo?.id)}
           actionButton={true}

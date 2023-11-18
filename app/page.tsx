@@ -1,7 +1,6 @@
 import { InputForm } from "./components/Form";
 import { PrismaClient } from "@prisma/client";
 import Todo from "./components/Todo";
-// import Todo from "./components/shared/Todo";
 const prisma = new PrismaClient();
 async function getData() {
   const data = await prisma.todo.findMany({
@@ -11,7 +10,7 @@ async function getData() {
       isCompleted: true,
     },
     orderBy: {
-      createdAt: "desc",
+      createdAt: "desc", // Ordering the results by 'createdAt' in descending order
     },
   });
   return data;

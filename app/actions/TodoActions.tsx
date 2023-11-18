@@ -5,16 +5,10 @@ export async function create(title: string) {
   await prisma.todo.create({ data: { title: title } });
   revalidatePath("/");
 }
-export async function edit(formData: FormData) {
-  const input = formData.get("newTitle") as string;
-  const inputId = formData.get("inputId") as string;
+export async function edit({ id, title }: { id: string; title: string }) {
   await prisma.todo.update({
-    where: {
-      id: inputId,
-    },
-    data: {
-      title: input,
-    },
+    where: { id },
+    data: { title },
   });
   revalidatePath("/");
 }
